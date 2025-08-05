@@ -101,6 +101,22 @@ def ver_si_aprueba():
                 print( f" Cursos reprobados: {', '.join(str(curso) for curso in reprobados) if reprobados else 'Ninguno'}") #se evalua para no mostrar lista vacia
 
                 break
+def mostrar_informacion_estudaintes():
+        if not estudents: #Evalua que si no hay ningun estudiante registrado no se muetsra nada
+            print("No se hizo ningun registro de algun estudiante")
+            return
+        else:
+            print("\n ---MOSTRAR ESTUDIANTES---")
+            for carnet, datos in estudents.items(): #bucle para recorre y obtener los ingresado por el estudiante
+                print(f"\n Carnet: {carnet}")
+                print(f" Nombre del estudiante: {datos['Nombre']}")
+                print(f"Carera: {datos['Carrera']}")
+                if datos['Cursos']: #Evalua si hay cursos registrados
+                    print("Cursos del estudiante: ")
+                    for curso, nota in datos['Cursos'].items():
+                        print(f" {curso} || {nota}")
+                else :
+                    print(" No se ha añadido ningun curos del estudiante")
 saludar()
 while True:
     print("\n ---MENU---")
@@ -123,3 +139,5 @@ while True:
             calcular_promedio()
         case "5":
             ver_si_aprueba()
+        case "6":
+            mostrar_informacion_estudaintes()
