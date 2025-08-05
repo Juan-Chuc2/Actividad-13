@@ -10,13 +10,40 @@ def agregar_estudiante():
             print(f"El numero de carné {carnet} ya existe, vuelva a intentarlo")
             carnet = input("Ingrese el carné del estudiante: ")#si se equivoca en repetir un carnet se vuelve a solicitar
         else:
-            name_estudent = input("Ingrese el nombre del estudiante: ")
-            carrera = input("Ingrese la carrera del estudiante: ")
+            name_estudent = input("Ingrese el nombre del estudiante: ").capitalize()
+            carrera = input("Ingrese la carrera del estudiante: ").capitalize()
             estudents[carnet] = { "Nombre": name_estudent,
-                    "Carrera": carrera,
+                    "Carrera": carrera, #Se agrega los datos al diccionario
                     "Cursos":{}
                                   }
             print("Se a registrado correctamente al estudiante ")
+        break
+
+
+def curso_con_nota():
+    while True:
+        print("\n Agregar curso con nota")
+        carne = input("Ingrese el carnet del estudiante: ")  # se solicita el carné
+        if carne not in estudents:
+            print(" Verifique el carné, no se encontró. Vuelva a intentarlo")
+        else:
+            while True: # Validamos nombre del curso
+                name_curs = input("Ingrese el nombre del curso: ").capitalize().strip()
+                if name_curs == "":
+                    print(" El nombre del curso no puede quedar vacío")
+                else:
+                    break
+            while True: # Con un try-except se valida la nota
+                try:
+                    nota = int(input(f"Ingrese la nota del curso {name_curs}: "))
+                    if 0 <= nota <= 100:
+                        estudents[carne]['Cursos'][name_curs] = nota
+                        print(" Se agregó correctamente el curso y la nota")
+                        break
+                    else:
+                        print(f"⚠ La nota {nota} no está entre 0 y 100, vuelva a intentarlo")
+                except ValueError:
+                    print(" Error: Se ingresó un dato inválido, intente nuevamente")
         break
 saludar()
 while True:
@@ -32,3 +59,5 @@ while True:
     match option:
         case "1":
             agregar_estudiante()
+        case "2":
+            curso_con_nota()
