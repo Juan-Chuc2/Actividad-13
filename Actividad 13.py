@@ -141,3 +141,8 @@ while True:
             ver_si_aprueba()
         case "6":
             mostrar_informacion_estudaintes()
+        case "7":
+            print("\n --GRACIAS POR USAR EL PROGRAMA-- ")
+            break
+        case _:
+            print("Ingrese una opcion valida")
