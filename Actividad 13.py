@@ -64,7 +64,7 @@ def consultar_estudiante():
 def calcular_promedio():
     while True:
         print("\n --PROMEDIO ESTUDIANTE--")
-        carne = input("Ingrese el numero de carné a buscar: ")
+        carne = input("Ingrese el numero de carné que se va a calcular el promedio: ")
         if carne not in estudents:
             print(f"El numero de carné {carne} no se encontro. Vuelva a intenralo")# se evalua que si este el carne en el dcicionario
         else:
