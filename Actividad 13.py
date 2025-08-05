@@ -55,7 +55,7 @@ def consultar_estudiante():
                 print(f" Carrera: {estudents[carne]['Carrera']}")
                 if estudents[carne]['Cursos']:
                     print("Cursos que tiene asignados: ")
-                    print("Curso   ||   Nota final")
+                    print("Nombre del Curso   ||   Nota final")
                     for curso, nota in estudents[carne]["Cursos"].items():
                         print(f"{curso} || {nota}")  # se impime información del estudiante
                     break
