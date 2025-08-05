@@ -57,10 +57,10 @@ def consultar_estudiante():
                     print("Cursos que tiene asignados: ")
                     print("Curso   ||   Nota final")
                     for curso, nota in estudents[carne]["Cursos"].items():
-                        print(f"{curso} || {nota}")  # Imprimimos información del estudiante
+                        print(f"{curso} || {nota}")  # se impime información del estudiante
                     break
         except ValueError:
-            print("Se ingreso un dato invalidop")
+            print("Se ingreso un dato invalidop") #Para evitar errores
 
 saludar()
 while True:
