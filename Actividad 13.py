@@ -18,6 +18,7 @@ def agregar_estudiante():
                                   }
             print("Se a registrado correctamente al estudiante ")
         break
+saludar()
 while True:
     print("\n ---MENU---")
     print("1. Agregar Estudiante")
