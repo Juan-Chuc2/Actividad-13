@@ -18,8 +18,6 @@ def agregar_estudiante():
                                   }
             print("Se a registrado correctamente al estudiante ")
         break
-
-
 def curso_con_nota():
     while True:
         print("\n Agregar curso con nota")
@@ -35,16 +33,35 @@ def curso_con_nota():
                     break
             while True: # Con un try-except se valida la nota
                 try:
-                    nota = int(input(f"Ingrese la nota del curso {name_curs}: "))
+                    nota = float(input(f"Ingrese la nota del curso {name_curs}: "))
                     if 0 <= nota <= 100:
                         estudents[carne]['Cursos'][name_curs] = nota
                         print(" Se agregó correctamente el curso y la nota")
                         break
                     else:
-                        print(f"⚠ La nota {nota} no está entre 0 y 100, vuelva a intentarlo")
+                        print(f" La nota {nota} no está entre 0 y 100, vuelva a intentarlo")
                 except ValueError:
                     print(" Error: Se ingresó un dato inválido, intente nuevamente")
         break
+def consultar_estudiante():
+    while True:
+        try:
+            print("\n --CONSULTA DE ESTUDIANTE--")
+            carne = input("Ingrese el carne del estudiante a mostrar: ")
+            if carne not in estudents:
+                print(f"el numero de carné {carne} no se encontro. vuelva a intentarlo") # se verifica que si exista el carne
+            else:
+                print(f" Nombre: {estudents[carne]['Nombre']}")
+                print(f" Carrera: {estudents[carne]['Carrera']}")
+                if estudents[carne]['Cursos']:
+                    print("Cursos que tiene asignados: ")
+                    print("Curso   ||   Nota final")
+                    for curso, nota in estudents[carne]["Cursos"].items():
+                        print(f"{curso} || {nota}")  # Imprimimos información del estudiante
+                    break
+        except ValueError:
+            print("Se ingreso un dato invalidop")
+
 saludar()
 while True:
     print("\n ---MENU---")
@@ -61,3 +78,5 @@ while True:
             agregar_estudiante()
         case "2":
             curso_con_nota()
+        case "3":
+            consultar_estudiante()
