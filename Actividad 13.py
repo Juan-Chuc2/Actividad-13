@@ -61,7 +61,24 @@ def consultar_estudiante():
                     break
         except ValueError:
             print("Se ingreso un dato invalidop") #Para evitar errores
-
+def calcular_promedio():
+    while True:
+        print("\n --PROMEDIO ESTUDIANTE--")
+        carne = input("Ingrese el numero de carné a buscar: ")
+        if carne not in estudents:
+            print(f"El numero de carné {carne} no se encontro. Vuelva a intenralo")# se evalua que si este el carne en el dcicionario
+        else:
+            curso = estudents[carne]['Cursos'] #comienza el proceso de promedio
+            if len(curso) ==0:
+                print("No hay ningun curso registrado") # Se evalua que si haya cursos registrados
+            else:
+                sum_notas = 0 #declaro contadores para calcular el promedio
+                cantidad_curs = 0
+                for nota in curso.values():
+                    sum_notas += nota
+                    cantidad_curs +=1
+                print(f"El promedio de {estudents[carne]['Nombre']} es {sum_notas/cantidad_curs}") #Se calcula el promedio
+                break
 saludar()
 while True:
     print("\n ---MENU---")
@@ -80,3 +97,5 @@ while True:
             curso_con_nota()
         case "3":
             consultar_estudiante()
+        case "4":
+            calcular_promedio()
