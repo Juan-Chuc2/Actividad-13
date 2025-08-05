@@ -79,6 +79,28 @@ def calcular_promedio():
                     cantidad_curs +=1
                 print(f"El promedio de {estudents[carne]['Nombre']} es {sum_notas/cantidad_curs}") #Se calcula el promedio
                 break
+def ver_si_aprueba():
+    while True:
+        print("\n --VERIFICAR SI APRUEBA--")
+        carne = input("Ingrese el numero de carné del estudiante: ")
+        if carne not in estudents:
+            print(f"El numero de carné {carne} no se encontro. Intente de nuevo")# se verifica que el carne exista
+        else:
+            curso = estudents[carne]['Cursos']
+            if len(curso) ==0:
+                print("No se ha registrado ningun curso")
+            else:
+                aprobados = []
+                reprobados = []
+                for key, nota in curso.items(): #se recorre el dicionario
+                    if nota >= 61:
+                        aprobados.append(nota) # si cumple la condicion se agrega aca
+                    else:
+                        reprobados.append(nota) # si no cumple la condicion se agrega aca
+                print(f" Cursos aprobados: {', '.join(str(curso) for curso in aprobados) if aprobados else 'Ninguno'}") #se evalua para no mostrar lista vacia
+                print( f" Cursos reprobados: {', '.join(str(curso) for curso in reprobados) if reprobados else 'Ninguno'}") #se evalua para no mostrar lista vacia
+
+                break
 saludar()
 while True:
     print("\n ---MENU---")
@@ -99,3 +121,5 @@ while True:
             consultar_estudiante()
         case "4":
             calcular_promedio()
+        case "5":
+            ver_si_aprueba()
